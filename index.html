@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+
+            width: 20%;
+        }
+        label {
+            display: flex;
+            flex-direction: column;
+
+            margin: 5%;
+        }
+        input {
+            font-size: 1.5em
+        }
+        p {
+            display: flex;
+            width: 100%;
+        }
+        span {
+            border: 1px solid black;
+            min-width: 8%;
+            margin-left: 1%;
+            padding: 0 10px;
+
+            text-align: center;
+            font-size: 1.5em
+        }
+    </style>
+    <title>league pompe calculator</title>
+</head>
+<body>
+    <h1>League pompe calculator</h1>
+    <p>page réalisé par julien vaumoron - aka Sukaato</p>
+    <ul>
+        <li>1 kill = -2 pompes</li>
+        <li>1 mort = + 5 pompes</li>
+        <li>1 assist = -1 pompe</li>
+    </ul>
+    <form action="#" method="post">
+        <label for="kill">Nombre de kill :
+            <input type="number" name="kill" id="kill" value="0" min="0" required>
+        </label>
+
+        <label for="death">Nombre de mort :
+            <input type="number" name="death" id="death" value="0" min="0" required>
+        </label>
+
+        <label for="assist">Nombre d'assitance :
+            <input type="number" name="assist" id="assist" value="0" min="0" required>
+        </label>
+    </form>
+    
+    <p>Total :
+        <span id="totalNumber">entrez vos valeurs</span>
+    </p>
+
+    <script>
+        var kill = document.getElementById('kill');
+        var death = document.getElementById('death');
+        var assist = document.getElementById('assist');
+
+        kill.onchange=function () {
+            // console.log("kill");
+            pompeCalculator();
+        }
+
+        death.onchange=function () {
+            console.log("death");
+            pompeCalculator();
+        }
+
+        assist.onchange=function () {
+            // console.log("assit");
+            pompeCalculator();
+        }
+
+        function pompeCalculator() {
+            var totalNumber = document.getElementById('totalNumber');
+            var killValue = parseInt(kill.value * 2),
+                deathValue = parseInt(death.value * 5),
+                assistValue = parseInt(assist.value);
+
+            var total = deathValue - (killValue + assistValue);
+
+            console.log("K : " + (killValue));
+            console.log("D : " + (deathValue));
+            console.log("A : " + assistValue);
+            console.log("total : " + total);
+
+
+            if (total <= 0) { 
+                totalNumber.textContent= 0 + " pompes a éffectuer"; 
+            } else { 
+                totalNumber.textContent=total+" pompes a effectuer";
+            }
+        }
+
+    </script>
+</body>
+</html>
