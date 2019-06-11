@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ------------- LABEL ------------- */
+label[class*="CLI-basic"] {
+    /* Display */
+     display: flex;
+     
+    /* Texte */
+     font-size: 15px;
+
+    /* Autre */
+     pointer-events: none;
+}
+label[class*="CLI-basic"] > input {
+    /* Taille */
+     flex-grow: 1;
+     flex-shrink: 0;
+     min-width: 200px;
+     border: 2px solid rgba(70, 70, 70, 0.25);
+     border-radius: 4px;
+
+    /* Position */
+     padding: 4px 8px;
+     margin: 5px 0;
+
+    /* Texte */
+     line-height: 1.5;
+
+    /* Couleur */
+     outline-style: none;
+     box-shadow: 0px 0px 10px 1px #6565657c;
+
+    /* Autre */
+     pointer-events: initial;
+
+}
+label[class*="CLI-basic"] > input::placeholder {
+    font-family: 'Montserrat', sans-serif;
+}
+label[class*="CLI-basic"] > input:hover {
+    border-color: rgb(12, 202, 235);
+    background: rgba(98, 98, 98, 0.1);
+}
+label[class*="CLI-basic"] > input:active, 
+label[class*="CLI-basic"] > input:focus {
+    border-color: rgba(39, 134, 243, 0.5);
+    background: initial;
+}
+label[class*="CLI-basic"] > .CLI-placeholder {
+    /* Taille */
+     width: fit-content;
+
+    /* Couleur */
+     color: rgb(0, 0, 0);
+
+    /* Autre */
+     pointer-events: initial;
+     cursor: pointer;
+     transition: .2s ease 0s;
+}
+label[class*="CLI-basic"] > input:active ~ .CLI-placeholder,
+label[class*="CLI-basic"] > input:focus ~ .CLI-placeholder {
+    /* Couleur */
+     color: rgba(39, 134, 243, 0.5);
+
+    /* Autre */
+     transition: .2s ease 0s;
+}
+
+.CLI-basic-top {
+    /* Display */
+     flex-direction: column-reverse;
+}
+.CLI-basic-bottom {
+    /* Display */
+     flex-direction: column;
+}
+.CLI-basic-left {
+    /* Display */
+     flex-direction: row-reverse;
+     justify-content: flex-end;
+     align-items: center;
+}
+.CLI-basic-left > .CLI-placeholder {
+    /* Position */
+     margin-right: 5px;
+}
+.CLI-basic-right {
+    /* Display */
+     flex-direction: row;
+     align-items: center; 
+}
+.CLI-basic-right > .CLI-placeholder {
+    /* Position */
+     margin: 0 5px;
+}
+
+label[class*="CLI-basic-in"] {
+    /* Position */
+     position: relative;
+}
+label[class*="CLI-basic-in"] > .CLI-placeholder {
+    /* Position */
+     position: absolute;
+     transform: translate(10px, 56%);
+
+    /* Texte */
+     line-height: 1.5;
+     font-size: 13.3px;
+     font-family: 'Montserrat', sans-serif;
+
+    /* Couleur */
+     color: gray;
+
+    /* Autre */
+     cursor: text;
+
+}
+.CLI-basic-in > input:not(:placeholder-shown) ~ .CLI-placeholder {
+    display: none;
+}
+.CLI-basic-in-out {
+    /* Position */
+     margin-top: 15px;
+
+    /* Autre */
+     transition: .2s ease-in-out 0s;
+}
+.CLI-basic-in-out > input:not(:placeholder-shown) ~ .CLI-placeholder {
+    /* Position */
+     transform: translate(5px, -70%);
+
+    /* Autre */
+     transition: .2s ease-in-out 0s;
+}
