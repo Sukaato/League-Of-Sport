@@ -9,7 +9,6 @@
     /* Couleur */
      color: azure;
 }
-
 body {
     /* Display */
      display: flex;
@@ -77,12 +76,15 @@ header {
 
                     /* Taille */
                      width: 0%;
-                     border: 0px solid rgb(61, 61, 61);
+                     height: 2px;
 
                     /* Position */
-                     position: absolute;
+                     position:  absolute;
                      top: 110%;
                      left: 50%;
+
+                    /* Couleur */
+                     background: transparent;
 
                     /* Autre */
                      transition: .4s ease 0s;
@@ -90,13 +92,15 @@ header {
                     .link > a:hover::before {
                         /* Taille */
                          width: 100%;
-                         border: 1px solid azure;
 
                         /* Position */
                          left: 0%;
 
+                        /* Couleur */
+                         background: #FFF;
+
                         /* Autre */
-                         transition: .4s ease 0s;
+                         transition: .2s ease 0s;
                     }
 
 /* ------------------------------- */
@@ -230,18 +234,30 @@ main {
                         /* Couleur */
                          background: none;
                     }
-                        .KDA button[id^="remove"]::before {
+                        .KDA button[id^="remove"]::before, 
+                        .KDA button[id^="add"]::before,
+                        .KDA button[id^="add"]::after {
                             /* Display */
-                             content: "_";
+                             content: "";
+                             
+                            /* Taille */
+                             width: 55%;
+                             border: 2px solid azure;
+                             border-radius: 5px;
 
                             /* Position */
                              position: absolute;
-                             bottom: 40%;
-                             left: 28%;
+                             transform: translate(-15%, -40%);
                         }
                         .KDA button[id^="add"]::before {
-                            /* Display */
-                             content: "+";
+                            /* Position */
+                             transform: translate(-48%, -40%);
+                        }
+                        .KDA button[id^="add"]::after {
+                            /* Position */
+                             width: initial;
+                             height: 55%;
+                             transform: translate(-50%, -45%);
                         }
                         .KDA button:disabled {
                             /* Couleur */
@@ -341,6 +357,10 @@ main {
                          cursor: no-drop;
                          transition: .4s ease 0s;
                     }
+
+/* ------------------------------- */
+/*              FOOTER             */
+/* ------------------------------- */
 footer {
     /* Position */
      padding: 2%;
@@ -355,6 +375,9 @@ footer {
          font-size: .7em;
     }
 
+/* ------------------------------- */
+/*            RESPONSIVE           */
+/* ------------------------------- */
 @media screen AND (min-width: 768px) AND (max-width: 1024px) {
     table {
         /* Taille */
@@ -401,7 +424,7 @@ footer {
     }
 }
 
-@media screen AND (min-width: 1280px) {
+@media screen AND (min-width: 1025px) {
     header {
         /* Display */
          flex-direction: row;
