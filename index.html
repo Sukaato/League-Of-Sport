@@ -4,115 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Vaumoron Julien">
+    <meta name="description" content="Se remettre au sport avec League of Legends c'est possible">
     <!-- Police d'écriture -->
     <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="src/css/style.css">
+    <!-- <link rel="stylesheet" href="src/css/style.min.css"> -->
 
     <link rel="shortcut icon" href="src/img/LOL.png" type="image/x-icon">
-    <title>League Pump</title>
+    <title>League Sport</title>
 </head>
 <body>
     <header>
-        <h1>league of pump</h1>
+        <h1>league of sport</h1>
         <nav>
             <ul>
                 <li class="link">
-                    <a href="https://euw.op.gg" target="_blank" rel="noopener noreferrer">op.gg</a>
+                    <a id="opgg" href="http://euw.op.gg" target="_blank" rel="noopener noreferrer">op.gg</a>
                 </li>
                 <li class="link">
-                    <a href="https://porofessor.gg/fr/" target="_blank" rel="noopener noreferrer">porofessor</a>
+                    <a id="porofessor" href="http://porofessor.gg" target="_blank" rel="noopener noreferrer">porofessor</a>
                 </li>
             </ul>
+            <label for="pseudo" class="CLI-basic-in-out">
+                Votre pseudo
+                <input type="text" name="pseudo" id="pseudo">
+            </label>
         </nav>
     </header>
 
     <main>
-        <section>
-            <h2>Faites du sport en jouant à League of Legends</h2>
-            <table>
-                <tbody>
-                    <tr id="role">
-                        <th colspan="3">
-                            <input type="radio" name="poste" id="top">
-                            <label for="top">
-                                <img src="src/img/TOP.png" alt="top">
-                            </label>
-                            
-                            <input type="radio" name="poste" id="jng">
-                            <label for="jng">
-                                <img src="src/img/JNG.png" alt="jungle">
-                            </label>
-                            
-                            <input type="radio" name="poste" id="mid" checked>
-                            <label for="mid">
-                                <img src="src/img/MID.png" alt="mid">
-                            </label>
-                            
-                            <input type="radio" name="poste" id="adc">
-                            <label for="adc">
-                                <img src="src/img/ADC.png" alt="adc">
-                            </label>
-                            
-                            <input type="radio" name="poste" id="sup">
-                            <label for="sup">
-                                <img src="src/img/SUP.png" alt="supp">
-                            </label>
-                        </th>
-                    </tr>
+        <h2> Faites du sport tout en jouant !</h2>
 
-                    <tr class="KDA">
-                        <th>
-                            <button id="removeKill" disabled></button>
-                        </th>
+        <div id="selection" class="content">
+            <input type="radio" name="poste" id="objectif">
+            <label for="objectif">
+                <img src="src/img/TOP.png" alt="objectif">
+                <!-- Tour / Inibiteur / Nexus -->
+            </label>
 
-                        <th>Nombre de kill : <span id="killValue">0</span></th>
-                        
-                        <th>
-                            <button id="addKill"></button>
-                        </th>
-                    </tr>
+            <input type="radio" name="poste" id="kda" checked>
+            <label for="kda">
+                <img src="src/img/kda.jpg" alt="kda">
+                <!-- Kill / Death / Assist -->
+            </label>
 
-                    <tr class="KDA">
-                        <th>
-                            <button id="removeDeath" disabled></button>
-                        </th>
+            <input type="radio" name="poste" id="jungle">
+            <label for="jungle">
+                <img src="src/img/JNG.png" alt="jungle">
+                <!-- Herald / Baron / Carapateur / Drake -->
+            </label>
 
-                        <th>Nombre de mort : <span id="deathValue">0</span></th>
-                        
-                        <th>
-                            <button id="addDeath"></button>
-                        </th>
-                    </tr>
+        </div>
+        <div>
+            <div id="objectif-div" class="content animation hidden">
+                <div>
+                    <button id="removeTurret" class="btn minus" disabled></button>
+                    <p id="turret" class="value">Nombre de tourelle détruite : </p>
+                    <button id="addTurret" class="btn plus"></button>
+                </div>
+                <div>
+                    <button id="removeInib" class="btn minus" disabled></button>
+                    <p id="inib" class="value">Nombre d'inhibiteur détruit : </p>
+                    <button id="addInib" class="btn plus"></button>
+                </div>
+                <div>
+                    <button id="removeNexus" class="btn minus" disabled></button>
+                    <p id="nexus" class="value">Nombre de nexus détruit : </p>
+                    <button id="addNexus" class="btn plus"></button>
+                </div>
+            </div>
+            
+            <div id="kda-div" class="content animation">
+                <div>
+                    <button id="removeKill" class="btn minus" disabled></button>
+                    <p id="kill" class="value">Nombre de kill : </p>
+                    <button id="addKill" class="btn plus"></button>
+                </div>
+                <div>
+                    <button id="removeDeath" class="btn minus" disabled></button>
+                    <p id="death" class="value">Nombre de mort : </p>
+                    <button id="addDeath" class="btn plus"></button>
+                </div>
+                <div>
+                    <button id="removeAssist" class="btn minus" disabled></button>
+                    <p id="assist" class="value">Nombre d'assistance : </p>
+                    <button id="addAssist" class="btn plus"></button>
+                </div>
+            </div>
 
-                    <tr class="KDA">
-                        <th>
-                            <button id="removeAssist" disabled></button>
-                        </th>
-
-                        <th>Nombre d'assistance : <span id="assistValue">0</span></th>
-
-                        <th>
-                            <button id="addAssist"></button>
-                        </th>
-                    </tr>
-
-                    <tr>
-                        <th colspan="3">
-                            <button id="reset" disabled>reset</button>
-                        </th>
-                    </tr>
-                </tbody>
-            </table>
-            <p>Nombre de pompe à effectuer : <span id="pumpValue">0</span></p>
-        </section>
+            <div id="jungle-div" class="content animation hidden">
+                <div>
+                    <button id="removeCarap" class="btn minus" disabled></button>
+                    <p id="carap" class="value">Nombre de carapteur pris : </p>
+                    <button id="addCarap" class="btn plus"></button>
+                </div>
+                <div>
+                    <button id="removeHerald" class="btn minus" disabled></button>
+                    <p id="herald" class="value">Nombre d'hérald pris : </p>
+                    <button id="addHerald" class="btn plus"></button>
+                </div>
+                <div>
+                    <button id="removeDrake" class="btn minus" disabled></button>
+                    <p id="drake" class="value">Nombre de dragon pris : </p>
+                    <button id="addDrake" class="btn plus"></button>
+                </div>
+                <div>
+                    <button id="removeBaron" class="btn minus" disabled></button>
+                    <p id="baron" class="value">Nombre de baron pris : </p>
+                    <button id="addBaron" class="btn plus"></button>
+                </div>
+            </div>
+        </div>
+        <p id="result" class="content value">Nombre de pompe a effectuer : </p>
+        <button type="reset" id="reset" class="btn" disabled >reset</button>
     </main>
+    
     <footer>
-        <p>Site réalisé par Vaumoron Julien</p>
+        <p>Site réalisé par Vaumoron Julien - Aka Sukaato</p>
     </footer>
-
-    <script src="src/js/script.js"></script>
+    
+    <script src="src/ext/CLI-input/CLI.js"></script>
+    <script src="src/js/function.js"></script>
+    <script src="src/js/selection.js"></script>
+    <script src="src/js/hrefBuilder.js"></script>
+    <script src="src/js/lop-objectif.js"></script>
+    <script src="src/js/lop-kda.js"></script>
+    <script src="src/js/lop-jungle.js"></script>
 </body>
 </html>
