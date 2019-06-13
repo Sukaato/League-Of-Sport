@@ -1,5 +1,6 @@
 (() => init())();
 
+// Met toute les valeurs à 0
 function init() {
     let values = document.getElementsByClassName("value");
     for (const i of values) {
@@ -7,6 +8,7 @@ function init() {
     }
 };
 
+// Display l'affichage demander
 function toggleView(btn) {
     let div = document.querySelectorAll('[id*=-div]');
     div.forEach(e => {
@@ -19,6 +21,7 @@ function toggleView(btn) {
     elt.classList.remove("hidden");
 }
 
+// Change les href des links
 function reloadLink(pseudo) {
     pseudo = input.value;
     if (pseudo == null || pseudo == undefined || pseudo == "") {
@@ -45,52 +48,52 @@ function buttonToggle(selector, state) {
 
 function lopCalcul() {
     let value = 0;
-        values = document.getElementsByClassName("value");
-        valuesLength = values.length;
+    let values = document.getElementsByClassName("value");
     
     for (const i of values) {
         switch (i.id) {
             case "turret":
                 value -= (parseInt(i.getAttribute("data-after")) * 0.50);
                 break;
-    
+
             case "inib":
                 value -= (parseInt(i.getAttribute("data-after")) * 0.65);
                 break;
-                
+
             case "nexus":
                 value -= (parseInt(i.getAttribute("data-after")) * 1.00);
                 break;
-    
+
             case "kill":
                 value -= (parseInt(i.getAttribute("data-after")) * 2.00);
                 break;
-    
+
             case "death":
                 value += (parseInt(i.getAttribute("data-after")) * 6.00);
                 break;
-    
+
             case "assist":
                 value -= (parseInt(i.getAttribute("data-after")) * 1.00);
                 break;
-    
+
             case "carap":
                 value -= (parseInt(i.getAttribute("data-after")) * 0.35);
                 break;
-    
+
             case "herald":
                 value -= (parseInt(i.getAttribute("data-after")) * 2.00);
                 break;
-    
+
             case "drake":
                 value -= (parseInt(i.getAttribute("data-after")) * 0.60);
                 break;
-    
+
             case "baron":
                 value -= (parseInt(i.getAttribute("data-after")) * 0.55);
                 break;
-    
+
             default:
+                console.log("erreur lors du calcul, vérifier la débugger")
                 break;
         }
     }
@@ -119,11 +122,13 @@ function resetValue() {
     buttonToggle(removeTurret, true);
     buttonToggle(removeInib, true);
     buttonToggle(removeNexus, true);
+    buttonToggle(addNexus, false);
     buttonToggle(removeKill, true);
     buttonToggle(removeDeath, true);
     buttonToggle(removeAssist, true);
     buttonToggle(removeCarap, true);
     buttonToggle(removeHerald, true);
+    buttonToggle(addHerald, false);
     buttonToggle(removeDrake, true);
     buttonToggle(removeBaron, true);
 }
