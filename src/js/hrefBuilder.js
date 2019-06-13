@@ -1,4 +1,4 @@
-var opgg = getEltById("opgg");
+let opgg = getEltById("opgg");
     poro = getEltById("porofessor");
     opggBaseUrl = opgg.href;
     poroBaseUrl = poro.href;

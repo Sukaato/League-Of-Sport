@@ -1,20 +1,20 @@
-var removeKill = document.getElementById("removeKill"),
+let removeKill = document.getElementById("removeKill"),
     addKill = document.getElementById("addKill"),
     killValue = document.getElementById("killValue");
 
-var removeDeath = document.getElementById("removeDeath"),
+let removeDeath = document.getElementById("removeDeath"),
     addDeath = document.getElementById("addDeath"),
     deathValue = document.getElementById("deathValue");
 
-var removeAssist = document.getElementById("removeAssist"),
+let removeAssist = document.getElementById("removeAssist"),
     addAssist = document.getElementById("addAssist"),
     assistValue = document.getElementById("assistValue");
 
-var reset = document.getElementById("reset");
+let reset = document.getElementById("reset");
 
 // Calcul
 function pumpCalcul() {
-    var pumpValue = document.getElementById("pumpValue"),
+    let pumpValue = document.getElementById("pumpValue"),
         k = parseInt(killValue.textContent),
         d = parseInt(deathValue.textContent),
         a = parseInt(assistValue.textContent),

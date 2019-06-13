@@ -2,7 +2,7 @@
     result = getEltById('result');
 
 // BOUTON DE SELECTION
-var selectObj = document.querySelectorAll('#objectif + label')[0];
+let selectObj = document.querySelectorAll('#objectif + label')[0];
     selectKda = document.querySelectorAll('#kda + label')[0];
     selectJng = document.querySelectorAll('#jungle + label')[0];
 

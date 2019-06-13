@@ -1,4 +1,4 @@
-var removeKill = getEltById("removeKill"),
+let removeKill = getEltById("removeKill"),
     addKill = getEltById("addKill"),
     removeDeath = getEltById("removeDeath"),
     addDeath = getEltById("addDeath"),
@@ -6,16 +6,16 @@ var removeKill = getEltById("removeKill"),
     addAssist = getEltById("addAssist");
 
 removeKill.onclick = () => {
-    var elt = getEltById("kill");
-    var value = parseInt(elt.getAttribute("data-after")) - 1;
+    let elt = getEltById("kill");
+    let value = parseInt(elt.getAttribute("data-after")) - 1;
     elt.setAttribute("data-after", value)
 
     value <= 0 ? buttonToggle(removeKill, true) : "";
     lopCalcul();
 }
 addKill.onclick = () => {
-    var elt = getEltById("kill");
-    var value = parseInt(elt.getAttribute("data-after")) + 1;
+    let elt = getEltById("kill");
+    let value = parseInt(elt.getAttribute("data-after")) + 1;
     elt.setAttribute("data-after", value)
 
     buttonToggle(removeKill, false);
@@ -23,16 +23,16 @@ addKill.onclick = () => {
 }
 
 removeDeath.onclick = () => {
-    var elt = getEltById("death");
-    var value = parseInt(elt.getAttribute("data-after")) - 1;
+    let elt = getEltById("death");
+    let value = parseInt(elt.getAttribute("data-after")) - 1;
     elt.setAttribute("data-after", value)
 
     value <= 0 ? buttonToggle(removeDeath, true) : "";
     lopCalcul();
 }
 addDeath.onclick = () => {
-    var elt = getEltById("death");
-    var value = parseInt(elt.getAttribute("data-after")) + 1;
+    let elt = getEltById("death");
+    let value = parseInt(elt.getAttribute("data-after")) + 1;
     elt.setAttribute("data-after", value)
 
     buttonToggle(removeDeath, false);
@@ -40,16 +40,16 @@ addDeath.onclick = () => {
 }
 
 removeAssist.onclick = () => {
-    var elt = getEltById("assist");
-    var value = parseInt(elt.getAttribute("data-after")) - 1;
+    let elt = getEltById("assist");
+    let value = parseInt(elt.getAttribute("data-after")) - 1;
     elt.setAttribute("data-after", value)
 
     value <= 0 ? buttonToggle(removeAssist, true) : "";
     lopCalcul();
 }
 addAssist.onclick = () => {
-    var elt = getEltById("assist");
-    var value = parseInt(elt.getAttribute("data-after")) + 1;
+    let elt = getEltById("assist");
+    let value = parseInt(elt.getAttribute("data-after")) + 1;
     elt.setAttribute("data-after", value)
 
     buttonToggle(removeAssist, false);
