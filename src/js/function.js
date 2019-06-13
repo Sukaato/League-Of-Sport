@@ -1,21 +1,21 @@
 (() => init())();
 
 function init() {
-    var values = document.getElementsByClassName("value");
+    let values = document.getElementsByClassName("value");
     for (const i of values) {
         i.setAttribute("data-after", 0);
     }
 };
 
 function toggleView(btn) {
-    var div = document.querySelectorAll('[id*=-div]');
+    let div = document.querySelectorAll('[id*=-div]');
     div.forEach(e => {
         if (!e.classList.contains("hidden")) {
             e.classList.add("hidden");
         }
     });
-    var id = btn.id;
-    var elt = getEltById(id + "-div");
+    let id = btn.id;
+    let elt = getEltById(id + "-div");
     elt.classList.remove("hidden");
 }
 
@@ -35,7 +35,7 @@ function getEltById(selector) {
 }
 
 function getValueByID(selector) {
-    var value = getEltById(selector);
+    let value = getEltById(selector);
     return value.getAttribute("data-after");
 }
 
@@ -44,7 +44,7 @@ function buttonToggle(selector, state) {
 }
 
 function lopCalcul() {
-    var value = 0;
+    let value = 0;
         values = document.getElementsByClassName("value");
         valuesLength = values.length;
     
@@ -96,14 +96,14 @@ function lopCalcul() {
     }
     value = value <= 0 ? 0 : Math.ceil(value);
     value >= 0 ? buttonToggle(reset, false) : buttonToggle(reset, true);
-    var result = getEltById("result");
+    let result = getEltById("result");
     result.setAttribute("data-after", value);
     isResetable();
 }
 
 function isResetable() {
-    var btn = document.getElementsByClassName("minus");
-    var reset = 0;
+    let btn = document.getElementsByClassName("minus");
+    let reset = 0;
     for (const i of btn) {
         if (i.disabled) {
             reset += 1;
@@ -128,7 +128,7 @@ function resetValue() {
     buttonToggle(removeBaron, true);
 }
 
-var reset = getEltById("reset");
+let reset = getEltById("reset");
 reset.onclick = () => {
     resetValue();
     init();

@@ -1,4 +1,4 @@
-var removeCarap = getEltById("removeCarap"),
+let removeCarap = getEltById("removeCarap"),
     addCarap = getEltById("addCarap"),
     removeHerald = getEltById("removeHerald"),
     addHerald = getEltById("addHerald"),
@@ -8,16 +8,16 @@ var removeCarap = getEltById("removeCarap"),
     addBaron = getEltById("addBaron");
 
 removeCarap.onclick = () => {
-    var elt = getEltById("carap");
-    var value = parseInt(elt.getAttribute("data-after")) - 1;
+    let elt = getEltById("carap");
+    let value = parseInt(elt.getAttribute("data-after")) - 1;
     elt.setAttribute("data-after", value)
 
     value <= 0 ? buttonToggle(removeCarap, true) : "";
     lopCalcul();
 }
 addCarap.onclick = () => {
-    var elt = getEltById("carap");
-    var value = parseInt(elt.getAttribute("data-after")) + 1;
+    let elt = getEltById("carap");
+    let value = parseInt(elt.getAttribute("data-after")) + 1;
     elt.setAttribute("data-after", value)
 
     buttonToggle(removeCarap, false);
@@ -25,33 +25,35 @@ addCarap.onclick = () => {
 }
 
 removeHerald.onclick = () => {
-    var elt = getEltById("herald");
-    var value = parseInt(elt.getAttribute("data-after")) - 1;
+    let elt = getEltById("herald");
+    let value = parseInt(elt.getAttribute("data-after")) - 1;
     elt.setAttribute("data-after", value)
-
-    value <= 0 ? buttonToggle(removeHerald, true) : "";
+    
+    buttonToggle(removeHerald, true);
+    buttonToggle(addHerald, false);
     lopCalcul();
 }
 addHerald.onclick = () => {
-    var elt = getEltById("herald");
-    var value = parseInt(elt.getAttribute("data-after")) + 1;
+    let elt = getEltById("herald");
+    let value = parseInt(elt.getAttribute("data-after")) + 1;
     elt.setAttribute("data-after", value)
 
     buttonToggle(removeHerald, false);
+    buttonToggle(addHerald, true);
     lopCalcul();
 }
 
 removeDrake.onclick = () => {
-    var elt = getEltById("drake");
-    var value = parseInt(elt.getAttribute("data-after")) - 1;
+    let elt = getEltById("drake");
+    let value = parseInt(elt.getAttribute("data-after")) - 1;
     elt.setAttribute("data-after", value)
 
     value <= 0 ? buttonToggle(removeDrake, true) : "";
     lopCalcul();
 }
 addDrake.onclick = () => {
-    var elt = getEltById("drake");
-    var value = parseInt(elt.getAttribute("data-after")) + 1;
+    let elt = getEltById("drake");
+    let value = parseInt(elt.getAttribute("data-after")) + 1;
     elt.setAttribute("data-after", value)
 
     buttonToggle(removeDrake, false);
@@ -59,16 +61,16 @@ addDrake.onclick = () => {
 }
 
 removeBaron.onclick = () => {
-    var elt = getEltById("baron");
-    var value = parseInt(elt.getAttribute("data-after")) - 1;
+    let elt = getEltById("baron");
+    let value = parseInt(elt.getAttribute("data-after")) - 1;
     elt.setAttribute("data-after", value)
 
     value <= 0 ? buttonToggle(removeBaron, true) : "";
     lopCalcul();
 }
 addBaron.onclick = () => {
-    var elt = getEltById("baron");
-    var value = parseInt(elt.getAttribute("data-after")) + 1;
+    let elt = getEltById("baron");
+    let value = parseInt(elt.getAttribute("data-after")) + 1;
     elt.setAttribute("data-after", value)
 
     buttonToggle(removeBaron, false);
