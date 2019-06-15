@@ -4,24 +4,24 @@ function newHTML(nodeName) {
 
 let labels = document.querySelectorAll('[class*="CLI"]');
 
-labels.forEach(e => {
+labels.forEach(label => {
     let span = newHTML("span"),
-        labelText = e.outerText;
+        labelText = label.outerText;
 
     span.classList.add("CLI-placeholder");
     span.innerText = labelText;
 
-    let input = e.children[0];
-    if (e.classList.contains("CLI-basic-in") || e.classList.contains("CLI-basic-in-out")) {
+    let input = label.children[0];
+    if (label.classList.contains("CLI-basic-in") || label.classList.contains("CLI-basic-in-out")) {
         input.placeholder = " ";
     }
 
-    e.innerText = null;
-    e.append(input, span);
+    label.innerText = null;
+    label.append(input, span);
 
-    if (e.classList.contains("CLI-highligth")) {
+    if (label.classList.contains("CLI-highligth")) {
         let highligth = newHTML("span");
         highligth.classList.add("CLI-highligth");
-        e.append(highligth);
+        label.append(highligth);
     }
 });
