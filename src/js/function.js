@@ -1,55 +1,58 @@
-(() => init())();
-
 // Met toute les valeurs à 0
 function init() {
-    let values = document.getElementsByClassName("value");
-    for (const i of values) {
-        i.setAttribute("data-after", 0);
+    let values = document.querySelectorAll(".value");
+    for (const elt of values) {
+        elt.setAttribute("data-after", 0);
     }
 };
 
+function toggleButton(button, state) {
+    button.disabled = state;
+}
+
+function resetButton() {
+    toggleButton(LOP.objectives.turret.addTurretBtn, LOP.button.enable);
+    toggleButton(LOP.objectives.turret.removeTurretBtn, LOP.button.disable);
+    toggleButton(LOP.objectives.inib.addInibBtn, LOP.button.enable);
+    toggleButton(LOP.objectives.inib.removeInibBtn, LOP.button.disable);
+    toggleButton(LOP.objectives.nexus.addNexusBtn, LOP.button.enable);
+    toggleButton(LOP.objectives.nexus.removeNexusBtn, LOP.button.disable);
+
+    toggleButton(LOP.kda.kill.addKillBtn, LOP.button.enable);
+    toggleButton(LOP.kda.kill.removeKillBtn, LOP.button.disable);
+    toggleButton(LOP.kda.death.addDeathBtn, LOP.button.enable);
+    toggleButton(LOP.kda.death.removeDeathBtn, LOP.button.disable);
+    toggleButton(LOP.kda.assist.addAssistBtn, LOP.button.enable);
+    toggleButton(LOP.kda.assist.removeAssistBtn, LOP.button.disable);
+
+    toggleButton(LOP.jungle.carap.addCarapBtn, LOP.button.enable);
+    toggleButton(LOP.jungle.carap.removeCarapBtn, LOP.button.disable);
+    toggleButton(LOP.jungle.herald.addHeraldBtn, LOP.button.enable);
+    toggleButton(LOP.jungle.herald.removeHeraldBtn, LOP.button.disable);
+    toggleButton(LOP.jungle.drake.addDrakeBtn, LOP.button.enable);
+    toggleButton(LOP.jungle.drake.removeDrakeBtn, LOP.button.disable);
+    toggleButton(LOP.jungle.baron.addBaronBtn, LOP.button.enable);
+    toggleButton(LOP.jungle.baron.removeBaronBtn, LOP.button.disable);
+
+    toggleButton(LOP.reset, LOP.button.disable);
+}
+
 // Display l'affichage demander
 function toggleView(btn) {
-    let div = document.querySelectorAll('[id*=-div]');
-    div.forEach(e => {
-        if (!e.classList.contains("hidden")) {
-            e.classList.add("hidden");
+    let content = document.querySelectorAll('[id*=-div]');
+    content.forEach(elt => {
+        if (!elt.classList.contains("hidden")) {
+            elt.classList.add("hidden");
         }
     });
-    let id = btn.id;
-    let elt = getEltById(id + "-div");
+    let elt = document.querySelector("#" + btn.id + "-div");
     elt.classList.remove("hidden");
-}
-
-// Change les href des links
-function reloadLink(pseudo) {
-    pseudo = input.value;
-    if (pseudo == null || pseudo == undefined || pseudo == "") {
-        opgg.href = opggBaseUrl;
-        poro.href = poroBaseUrl;
-    } else {
-        opgg.href = "https://euw.op.gg/summoner/userName=" + pseudo;
-        poro.href = "https://porofessor.gg/fr/live/euw/" + pseudo;
-    }
-}
-
-function getEltById(selector) {
-    return document.getElementById(selector);
-}
-
-function getValueByID(selector) {
-    let value = getEltById(selector);
-    return value.getAttribute("data-after");
-}
-
-function buttonToggle(selector, state) {
-    selector.disabled = state
 }
 
 function lopCalcul() {
     let value = 0;
     let values = document.getElementsByClassName("value");
-    
+
     for (const i of values) {
         switch (i.id) {
             case "turret":
@@ -93,48 +96,28 @@ function lopCalcul() {
                 break;
 
             default:
-                console.log("erreur lors du calcul, vérifier la débugger")
+                console.log("New value : ", value);
                 break;
         }
     }
     value = value <= 0 ? 0 : Math.ceil(value);
-    value >= 0 ? buttonToggle(reset, false) : buttonToggle(reset, true);
-    let result = getEltById("result");
-    result.setAttribute("data-after", value);
+    value >= 0 ? 
+        toggleButton(LOP.reset, LOP.button.enable) :
+        toggleButton(LOP.reset, LOP.button.disable);
+
+    LOP.result.setAttribute("data-after", value);
     isResetable();
 }
 
 function isResetable() {
-    let btn = document.getElementsByClassName("minus");
+    let buttons = document.getElementsByClassName("minus");
     let reset = 0;
-    for (const i of btn) {
-        if (i.disabled) {
+    for (const button of buttons) {
+        if (button.disabled) {
             reset += 1;
-            if (reset == btn.length) {
+            if (reset === buttons.length) {
                 resetValue();
             }
         }
     }
 }
-
-function resetValue() {
-    buttonToggle(reset, true);
-    buttonToggle(removeTurret, true);
-    buttonToggle(removeInib, true);
-    buttonToggle(removeNexus, true);
-    buttonToggle(addNexus, false);
-    buttonToggle(removeKill, true);
-    buttonToggle(removeDeath, true);
-    buttonToggle(removeAssist, true);
-    buttonToggle(removeCarap, true);
-    buttonToggle(removeHerald, true);
-    buttonToggle(addHerald, false);
-    buttonToggle(removeDrake, true);
-    buttonToggle(removeBaron, true);
-}
-
-let reset = getEltById("reset");
-reset.onclick = () => {
-    resetValue();
-    init();
-};
