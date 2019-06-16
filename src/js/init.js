@@ -238,8 +238,8 @@ const lopFct = () => {
         elt.setAttribute("data-after", value)
 
         value === 0 ?
-            LOP.function.toggleButton(LOP.jungle.drake.remove, LOP.button.state.disable) :
-            LOP.function.toggleButton(LOP.jungle.drake.add,    LOP.button.state.enable);
+            LOP.function.toggleButton(LOP.jungle.dragon.remove, LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.jungle.dragon.add,    LOP.button.state.enable);
         LOP.function.calcul();
     });
 
@@ -248,9 +248,9 @@ const lopFct = () => {
         let value = parseInt(elt.getAttribute("data-after")) + 1;
         elt.setAttribute("data-after", value)
 
-        value === LOP.jungle.drake.values.max ?
-            LOP.function.toggleButton(LOP.jungle.drake.add,    LOP.button.state.disable) :
-            LOP.function.toggleButton(LOP.jungle.drake.remove, LOP.button.state.enable);
+        value === LOP.jungle.dragon.values.max ?
+            LOP.function.toggleButton(LOP.jungle.dragon.add,    LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.jungle.dragon.remove, LOP.button.state.enable);
         LOP.function.calcul();
     });
 
@@ -354,43 +354,43 @@ const lopFct = () => {
         for (const i of values) {
             switch (i.id) {
                 case "turret":
-                    value -= (parseInt(i.getAttribute("data-after")) * 0.50);
+                    value -= (parseInt(i.getAttribute("data-after")) * LOP.objectives.turret.values.int);
                     break;
 
                 case "inib":
-                    value -= (parseInt(i.getAttribute("data-after")) * 0.65);
+                    value -= (parseInt(i.getAttribute("data-after")) * LOP.objectives.inib.values.int);
                     break;
 
                 case "nexus":
-                    value -= (parseInt(i.getAttribute("data-after")) * 1.00);
+                    value -= (parseInt(i.getAttribute("data-after")) * LOP.objectives.nexus.values.int);
                     break;
 
                 case "kill":
-                    value -= (parseInt(i.getAttribute("data-after")) * 2.00);
+                    value -= (parseInt(i.getAttribute("data-after")) * LOP.kda.kill.values.int);
                     break;
 
                 case "death":
-                    value += (parseInt(i.getAttribute("data-after")) * 6.00);
+                    value += (parseInt(i.getAttribute("data-after")) * LOP.kda.death.values.int);
                     break;
 
                 case "assist":
-                    value -= (parseInt(i.getAttribute("data-after")) * 1.00);
+                    value -= (parseInt(i.getAttribute("data-after")) * LOP.kda.assist.values.int);
                     break;
 
                 case "carap":
-                    value -= (parseInt(i.getAttribute("data-after")) * 0.35);
+                    value -= (parseInt(i.getAttribute("data-after")) * LOP.jungle.carap.values.int);
                     break;
 
                 case "herald":
-                    value -= (parseInt(i.getAttribute("data-after")) * 2.00);
+                    value -= (parseInt(i.getAttribute("data-after")) * LOP.jungle.herald.values.int);
                     break;
 
                 case "drake":
-                    value -= (parseInt(i.getAttribute("data-after")) * 0.60);
+                    value -= (parseInt(i.getAttribute("data-after")) * LOP.jungle.dragon.values.int);
                     break;
 
                 case "baron":
-                    value -= (parseInt(i.getAttribute("data-after")) * 0.55);
+                    value -= (parseInt(i.getAttribute("data-after")) * LOP.jungle.baron.values.int);
                     break;
 
                 default:
