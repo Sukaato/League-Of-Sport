@@ -1,5 +1,3 @@
-(() => init())();
-
 const lopFct = () => {
     // CONTAINER
     let objectif = document.querySelector('#objectif + label');
@@ -33,30 +31,30 @@ const lopFct = () => {
     let addHeraldBtn = document.querySelector('#addHerald');
     let removeHeraldBtn = document.querySelector('#removeHerald');
 
-    let addDrakeBtn = document.querySelector('#addDrake');
-    let removeDrakeBtn = document.querySelector('#removeDrake');
+    let addDragonBtn = document.querySelector('#addDrake');
+    let removeDragonBtn = document.querySelector('#removeDrake');
 
     let addBaronBtn = document.querySelector('#addBaron');
     let removeBaronBtn = document.querySelector('#removeBaron');
 
-    let input = document.querySelector("#pseudo");
+    let pseudoInput = document.querySelector("#pseudo");
     let opgg = document.querySelector("#opgg");
     let porofessor = document.querySelector("#porofessor");
     
-    let reset = document.querySelector("#reset");
+    let resetBtn = document.querySelector("#reset");
     let result = document.querySelector("#result");
 
     // SWITCH 
     objectif.addEventListener('click', () => {
-        toggleView(document.querySelector('#objectif'));
+        LOP.function.toggleView(document.querySelector('#objectif'));
     });
 
     kda.addEventListener('click', () => {
-        toggleView(document.querySelector('#kda'));
+        LOP.function.toggleView(document.querySelector('#kda'));
     });
 
     jungle.addEventListener('click', () => {
-        toggleView(document.querySelector('#jungle'));
+        LOP.function.toggleView(document.querySelector('#jungle'));
     });
 
     // OBJECTIVE
@@ -66,9 +64,9 @@ const lopFct = () => {
         elt.setAttribute("data-after", value);
 
         value === 0 ?
-            toggleButton(LOP.objectives.turret.removeTurretBtn, LOP.button.disable) :
-            toggleButton(LOP.objectives.turret.addTurretBtn, LOP.button.enable);
-        lopCalcul();
+            LOP.function.toggleButton(LOP.objectives.turret.remove, LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.objectives.turret.add,    LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
     addTurretBtn.addEventListener('click', () => {
@@ -77,9 +75,9 @@ const lopFct = () => {
         elt.setAttribute("data-after", value)
 
         value === LOP.objectives.turret.values.max ?
-            toggleButton(LOP.objectives.turret.addTurretBtn, LOP.button.disable) :
-            toggleButton(LOP.objectives.turret.removeTurretBtn, LOP.button.enable);
-        lopCalcul();
+            LOP.function.toggleButton(LOP.objectives.turret.add,    LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.objectives.turret.remove, LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
     removeInibBtn.addEventListener('click', () => {
@@ -88,9 +86,9 @@ const lopFct = () => {
         elt.setAttribute("data-after", value)
 
         value === 0 ?
-            toggleButton(LOP.objectives.inib.removeInibBtn, LOP.button.disable) :
-            toggleButton(LOP.objectives.inib.addInibBtn, LOP.button.enable);
-        lopCalcul();
+            LOP.function.toggleButton(LOP.objectives.inib.remove, LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.objectives.inib.add,    LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
     addInibBtn.addEventListener('click', () => {
@@ -99,9 +97,9 @@ const lopFct = () => {
         elt.setAttribute("data-after", value)
 
         value === LOP.objectives.inib.values.max ?
-            toggleButton(LOP.objectives.inib.addInibBtn, LOP.button.disable) :
-            toggleButton(LOP.objectives.inib.removeInibBtn, LOP.button.enable);
-        lopCalcul();
+            LOP.function.toggleButton(LOP.objectives.inib.add,    LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.objectives.inib.remove, LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
     removeNexusBtn.addEventListener('click', () => {
@@ -109,9 +107,9 @@ const lopFct = () => {
         let value = parseInt(elt.getAttribute("data-after")) - 1;
         elt.setAttribute("data-after", value)
 
-        toggleButton(LOP.objectives.nexus.addNexusBtn, LOP.button.enable);
-        toggleButton(LOP.objectives.nexus.removeNexusBtn, LOP.button.disable);
-        lopCalcul();
+        LOP.function.toggleButton(LOP.objectives.nexus.remove, LOP.button.state.disable);
+        LOP.function.toggleButton(LOP.objectives.nexus.add,    LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
     addNexusBtn.addEventListener('click', () => {
@@ -119,9 +117,9 @@ const lopFct = () => {
         let value = parseInt(elt.getAttribute("data-after")) + 1;
         elt.setAttribute("data-after", value)
 
-        toggleButton(LOP.objectives.nexus.addNexusBtn, LOP.button.disable);
-        toggleButton(LOP.objectives.nexus.removeNexusBtn, LOP.button.enable);
-        lopCalcul();
+        LOP.function.toggleButton(LOP.objectives.nexus.add,    LOP.button.state.disable);
+        LOP.function.toggleButton(LOP.objectives.nexus.remove, LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
     // KDA
@@ -131,9 +129,9 @@ const lopFct = () => {
         elt.setAttribute("data-after", value)
 
         value === 0 ?
-            toggleButton(LOP.kda.kill.removeKillBtn, LOP.button.disable) :
-            toggleButton(LOP.kda.kill.addKillBtn, LOP.button.enable);
-        lopCalcul();
+            LOP.function.toggleButton(LOP.kda.kill.remove, LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.kda.kill.add,    LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
     addKillBtn.addEventListener('click', () => {
@@ -142,9 +140,9 @@ const lopFct = () => {
         elt.setAttribute("data-after", value)
 
         value === LOP.kda.kill.values.max ?
-            toggleButton(LOP.kda.kill.addKillBtn, LOP.button.disable) :
-            toggleButton(LOP.kda.kill.removeKillBtn, LOP.button.enable);
-        lopCalcul();
+            LOP.function.toggleButton(LOP.kda.kill.add,    LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.kda.kill.remove, LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
     removeDeathBtn.addEventListener('click', () => {
@@ -153,9 +151,9 @@ const lopFct = () => {
         elt.setAttribute("data-after", value)
 
         value === 0 ?
-            toggleButton(LOP.kda.death.removeDeathBtn, LOP.button.disable) :
-            toggleButton(LOP.kda.death.addDeathBtn, LOP.button.enable);
-        lopCalcul();
+            LOP.function.toggleButton(LOP.kda.death.remove, LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.kda.death.add,    LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
     addDeathBtn.addEventListener('click', () => {
@@ -164,9 +162,9 @@ const lopFct = () => {
         elt.setAttribute("data-after", value)
 
         value === LOP.kda.death.values.max ?
-            toggleButton(LOP.kda.death.addDeathBtn, LOP.button.disable) :
-            toggleButton(LOP.kda.death.removeDeathBtn, LOP.button.enable);
-        lopCalcul();
+            LOP.function.toggleButton(LOP.kda.death.add,    LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.kda.death.remove, LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
     removeAssistBtn.addEventListener('click', () => {
@@ -175,9 +173,9 @@ const lopFct = () => {
         elt.setAttribute("data-after", value)
 
         value === 0 ?
-            toggleButton(LOP.kda.assist.removeAssistBtn, LOP.button.disable) :
-            toggleButton(LOP.kda.assist.addAssistBtn, LOP.button.enable);
-        lopCalcul();
+            LOP.function.toggleButton(LOP.kda.assist.remove, LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.kda.assist.add,    LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
     addAssistBtn.addEventListener('click', () => {
@@ -186,9 +184,9 @@ const lopFct = () => {
         elt.setAttribute("data-after", value)
 
         value === LOP.kda.death.values.max ?
-            toggleButton(LOP.kda.assist.addAssistBtn, LOP.button.disable) :
-            toggleButton(LOP.kda.assist.removeAssistBtn, LOP.button.enable);
-        lopCalcul();
+            LOP.function.toggleButton(LOP.kda.assist.add,    LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.kda.assist.remove, LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
     // JUNGLE
@@ -198,9 +196,9 @@ const lopFct = () => {
         elt.setAttribute("data-after", value)
 
         value === 0 ?
-            toggleButton(LOP.jungle.carap.removeCarapBtn, LOP.button.disable) :
-            toggleButton(LOP.jungle.carap.addCarapBtn, LOP.button.enable);
-        lopCalcul();
+            LOP.function.toggleButton(LOP.jungle.carap.remove, LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.jungle.carap.add,    LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
     addCarapBtn.addEventListener('click', () => {
@@ -209,9 +207,9 @@ const lopFct = () => {
         elt.setAttribute("data-after", value)
 
         value === LOP.jungle.carap.values.max ?
-            toggleButton(LOP.jungle.carap.addCarapBtn, LOP.button.disable) :
-            toggleButton(LOP.jungle.carap.removeCarapBtn, LOP.button.enable);
-        lopCalcul();
+            LOP.function.toggleButton(LOP.jungle.carap.add,    LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.jungle.carap.remove, LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
     removeHeraldBtn.addEventListener('click', () => {
@@ -219,9 +217,9 @@ const lopFct = () => {
         let value = parseInt(elt.getAttribute("data-after")) - 1;
         elt.setAttribute("data-after", value)
 
-        toggleButton(LOP.jungle.herald.removeHeraldBtn, LOP.button.disable);
-        toggleButton(LOP.jungle.herald.addHeraldBtn, LOP.button.enable);
-        lopCalcul();
+        LOP.function.toggleButton(LOP.jungle.herald.remove, LOP.button.state.disable);
+        LOP.function.toggleButton(LOP.jungle.herald.add,    LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
     addHeraldBtn.addEventListener('click', () => {
@@ -229,31 +227,31 @@ const lopFct = () => {
         let value = parseInt(elt.getAttribute("data-after")) + 1;
         elt.setAttribute("data-after", value)
 
-        toggleButton(LOP.jungle.herald.addHeraldBtn, LOP.button.disable);
-        toggleButton(LOP.jungle.herald.removeHeraldBtn, LOP.button.enable);
-        lopCalcul();
+        LOP.function.toggleButton(LOP.jungle.herald.add,    LOP.button.state.disable);
+        LOP.function.toggleButton(LOP.jungle.herald.remove, LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
-    removeDrakeBtn.addEventListener('click', () => {
+    removeDragonBtn.addEventListener('click', () => {
         let elt = document.querySelector('#drake');
         let value = parseInt(elt.getAttribute("data-after")) - 1;
         elt.setAttribute("data-after", value)
 
         value === 0 ?
-            toggleButton(LOP.jungle.drake.removeDrakeBtn, LOP.button.disable) :
-            toggleButton(LOP.jungle.drake.addDrakeBtn, LOP.button.enable);
-        lopCalcul();
+            LOP.function.toggleButton(LOP.jungle.drake.remove, LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.jungle.drake.add,    LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
-    addDrakeBtn.addEventListener('click', () => {
+    addDragonBtn.addEventListener('click', () => {
         let elt = document.querySelector('#drake');
         let value = parseInt(elt.getAttribute("data-after")) + 1;
         elt.setAttribute("data-after", value)
 
         value === LOP.jungle.drake.values.max ?
-            toggleButton(LOP.jungle.drake.addDrakeBtn, LOP.button.disable) :
-            toggleButton(LOP.jungle.drake.removeDrakeBtn, LOP.button.enable);
-        lopCalcul();
+            LOP.function.toggleButton(LOP.jungle.drake.add,    LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.jungle.drake.remove, LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
     removeBaronBtn.addEventListener('click', () => {
@@ -262,9 +260,9 @@ const lopFct = () => {
         elt.setAttribute("data-after", value)
 
         value === 0 ?
-            toggleButton(LOP.jungle.baron.removeBaronBtn, LOP.button.disable) :
-            toggleButton(LOP.jungle.baron.addBaronBtn, LOP.button.enable);
-        lopCalcul();
+            LOP.function.toggleButton(LOP.jungle.baron.remove, LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.jungle.baron.add,    LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
     addBaronBtn.addEventListener('click', () => {
@@ -273,140 +271,274 @@ const lopFct = () => {
         elt.setAttribute("data-after", value)
 
         value === LOP.jungle.baron.values.max ?
-            toggleButton(LOP.jungle.baron.addBaronBtn, LOP.button.disable) :
-            toggleButton(LOP.jungle.baron.removeBaronBtn, LOP.button.enable);
-        lopCalcul();
+            LOP.function.toggleButton(LOP.jungle.baron.add,    LOP.button.state.disable) :
+            LOP.function.toggleButton(LOP.jungle.baron.remove, LOP.button.state.enable);
+        LOP.function.calcul();
     });
 
-    input.onkeyup = () => {
-        let input = LOP.link.input
-        let string = input.value;
-        let opgg = LOP.link.opgg;
+    pseudoInput.onkeyup = () => {
+        let value      = LOP.link.input.value;
+        let opgg       = LOP.link.opgg;
         let porofessor = LOP.link.porofessor;
 
-        if (!string) {
-            opgg.opgg.href = opgg.base;
-            porofessor.porofessor.href = porofessor.base;
+        if (value) {
+            opgg.link.href       = opgg.extented + value;
+            porofessor.link.href = porofessor.extented + value;
         } else {
-            opgg.opgg.href = opgg.extented + string;
-            porofessor.porofessor.href = porofessor.extented + string;
+            opgg.link.href       = opgg.base;
+            porofessor.link.href = porofessor.base;
         }
     };
 
-    reset.addEventListener('click', () => {
-        resetButton();
-        init();
+    resetBtn.addEventListener('click', () => {
+        LOP.function.resetButton();
+        LOP.function.init();
     });
+
+    let init = () => {
+        let values = document.querySelectorAll(".value");
+        for (const elt of values) {
+            elt.setAttribute("data-after", 0);
+        }
+    };
+
+    let toggleButton = (button, state) => {
+        button.disabled = state;
+    }
+
+    let toggleView = (btn) => {
+        let content = document.querySelectorAll('[id*=-div]');
+        content.forEach(elt => {
+            if (!elt.classList.contains("hidden")) {
+                elt.classList.add("hidden");
+            }
+        });
+        let elt = document.querySelector(`#${btn.id}-div`);
+        elt.classList.remove("hidden");
+    }
+
+    let resetButton = () => {
+        let enable = LOP.button.state.enable;
+        let disable = LOP.button.state.disable;
+
+        LOP.function.toggleButton(LOP.objectives.turret.add, enable);
+        LOP.function.toggleButton(LOP.objectives.turret.remove, disable);
+        LOP.function.toggleButton(LOP.objectives.inib.add, enable);
+        LOP.function.toggleButton(LOP.objectives.inib.remove, disable);
+        LOP.function.toggleButton(LOP.objectives.nexus.add, enable);
+        LOP.function.toggleButton(LOP.objectives.nexus.remove, disable);
+
+        LOP.function.toggleButton(LOP.kda.kill.add, enable);
+        LOP.function.toggleButton(LOP.kda.kill.remove, disable);
+        LOP.function.toggleButton(LOP.kda.death.add, enable);
+        LOP.function.toggleButton(LOP.kda.death.remove, disable);
+        LOP.function.toggleButton(LOP.kda.assist.add, enable);
+        LOP.function.toggleButton(LOP.kda.assist.remove, disable);
+
+        LOP.function.toggleButton(LOP.jungle.carap.add, enable);
+        LOP.function.toggleButton(LOP.jungle.carap.remove, disable);
+        LOP.function.toggleButton(LOP.jungle.herald.add, enable);
+        LOP.function.toggleButton(LOP.jungle.herald.remove, disable);
+        LOP.function.toggleButton(LOP.jungle.dragon.add, enable);
+        LOP.function.toggleButton(LOP.jungle.dragon.remove, disable);
+        LOP.function.toggleButton(LOP.jungle.baron.add, enable);
+        LOP.function.toggleButton(LOP.jungle.baron.remove, disable);
+
+        LOP.function.toggleButton(LOP.button.reset, disable);
+    }
+
+    let calcul = () => {
+        let value = 0;
+        let values = document.getElementsByClassName("value");
+
+        for (const i of values) {
+            switch (i.id) {
+                case "turret":
+                    value -= (parseInt(i.getAttribute("data-after")) * 0.50);
+                    break;
+
+                case "inib":
+                    value -= (parseInt(i.getAttribute("data-after")) * 0.65);
+                    break;
+
+                case "nexus":
+                    value -= (parseInt(i.getAttribute("data-after")) * 1.00);
+                    break;
+
+                case "kill":
+                    value -= (parseInt(i.getAttribute("data-after")) * 2.00);
+                    break;
+
+                case "death":
+                    value += (parseInt(i.getAttribute("data-after")) * 6.00);
+                    break;
+
+                case "assist":
+                    value -= (parseInt(i.getAttribute("data-after")) * 1.00);
+                    break;
+
+                case "carap":
+                    value -= (parseInt(i.getAttribute("data-after")) * 0.35);
+                    break;
+
+                case "herald":
+                    value -= (parseInt(i.getAttribute("data-after")) * 2.00);
+                    break;
+
+                case "drake":
+                    value -= (parseInt(i.getAttribute("data-after")) * 0.60);
+                    break;
+
+                case "baron":
+                    value -= (parseInt(i.getAttribute("data-after")) * 0.55);
+                    break;
+
+                default:
+                    console.log("New value : ", value);
+                    break;
+            }
+        }
+        value = value <= 0 ? 0 : Math.ceil(value);
+        value >= 0 ?
+            toggleButton(LOP.button.reset, LOP.button.state.enable) :
+            toggleButton(LOP.button.reset, LOP.button.state.disable);
+
+        LOP.result.setAttribute("data-after", value);
+        LOP.function.isResetable();
+    }
+
+    let isResetable = () => {
+        let buttons = document.getElementsByClassName("minus");
+        let reset = 0;
+        for (const button of buttons) {
+            if (button.disabled) {
+                reset += 1;
+                if (reset === buttons.length) {
+                    resetValue();
+                }
+            }
+        }
+    }
 
     return {
         result,
-        reset,
+        function: {
+            toggleView,
+            toggleButton,
+            init,
+            resetButton,
+            calcul,
+            isResetable
+        },
         button: {
-            enable: false,
-            disable: true
+            reset: resetBtn,
+            state: {
+                enable: false,
+                disable: true
+            },
         },
         link: {
-            input,
+            input: pseudoInput,
             opgg: {
-                opgg,
+                link: opgg,
                 base: "http://euw.op.gg",
                 extented: "https://euw.op.gg/summoner/userName=",
                 multi: "https://euw.op.gg/multi/query="
 
             },
             porofessor: {
-                porofessor,
+                link: porofessor,
                 base: "http://porofessor.gg",
                 extented: "https://porofessor.gg/fr/live/euw/",
                 pregame: "https://porofessor.gg/fr/pregame/euw/"
             }
         },
         objectives: {
-            objectif,
+            container: objectif,
             turret: {
-                addTurretBtn,
-                removeTurretBtn,
+                add: addTurretBtn,
+                remove: removeTurretBtn,
                 values: {
                     max: 11,
-                    value: 0.50
+                    int: 0.50
                 }
             },
             inib: {
-                addInibBtn,
-                removeInibBtn,
+                add: addInibBtn,
+                remove: removeInibBtn,
                 values: {
                     max: 100,
-                    value: 0.65
+                    int: 0.65
                 }
             },
             nexus: {
-                addNexusBtn,
-                removeNexusBtn,
+                add: addNexusBtn,
+                remove: removeNexusBtn,
                 values: {
                     max: 1,
-                    value: 1.00
+                    int: 1.00
                 }
             }
         },
         kda: {
-            kda,
+            container: kda,
             kill: {
-                addKillBtn,
-                removeKillBtn,
+                add: addKillBtn,
+                remove: removeKillBtn,
                 values: {
                     max: 100,
-                    value: 2.00
+                    int: 2.00
                 }
             },
             death: {
-                addDeathBtn,
-                removeDeathBtn,
+                add: addDeathBtn,
+                remove: removeDeathBtn,
                 values: {
                     max: 100,
-                    value: 6.00
+                    int: 6.00
                 }
             },
             assist: {
-                addAssistBtn,
-                removeAssistBtn,
+                add: addAssistBtn,
+                remove: removeAssistBtn,
                 values: {
                     max: 100,
-                    value: 1.00
+                    int: 1.00
                 },
             }
         },
         jungle: {
-            jungle,
+            container: jungle,
             carap: {
-                addCarapBtn,
-                removeCarapBtn,
+                add: addCarapBtn,
+                remove: removeCarapBtn,
                 values: {
                     max: 100,
-                    value: 0.34
+                    int: 0.34
                 }
             },
             herald: {
-                addHeraldBtn,
-                removeHeraldBtn,
+                add: addHeraldBtn,
+                remove: removeHeraldBtn,
                 values: {
                     max: 1,
-                    value: 2.00
+                    int: 2.00
                 }
             },
-            drake: {
-                addDrakeBtn,
-                removeDrakeBtn,
+            dragon: {
+                add: addDragonBtn,
+                remove: removeDragonBtn,
                 values: {
                     max: 100,
-                    value: 0.60
+                    int: 0.60
                 }
             },
             baron: {
-                addBaronBtn,
-                removeBaronBtn,
+                add: addBaronBtn,
+                remove: removeBaronBtn,
                 values: {
                     max: 100,
-                    value: 0.70
+                    int: 0.70
                 }
             }
         }
@@ -414,3 +546,4 @@ const lopFct = () => {
 }
 
 const LOP = lopFct();
+(() => LOP.function.init())();
