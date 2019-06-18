@@ -62,9 +62,7 @@ const lopFct = () => {
 
     // OBJECTIVE
     removeTurretBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#turret');
-        let value = parseInt(elt.getAttribute("data-after")) - 1;
-        elt.setAttribute("data-after", value);
+        let value = removeValue('#turret');
 
         value === 0 ?
             toggleButton(removeTurretBtn, disable) :
@@ -73,9 +71,7 @@ const lopFct = () => {
     });
 
     addTurretBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#turret');
-        let value = parseInt(elt.getAttribute("data-after")) + 1;
-        elt.setAttribute("data-after", value)
+        let value = addValue('#turret');
 
         value === LOP.objectives.turret.values.max ?
             toggleButton(addTurretBtn,    disable) :
@@ -84,9 +80,7 @@ const lopFct = () => {
     });
 
     removeInibBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#inib');
-        let value = parseInt(elt.getAttribute("data-after")) - 1;
-        elt.setAttribute("data-after", value)
+        let value = removeValue('#inib');
 
         value === 0 ?
             toggleButton(removeInibBtn, disable) :
@@ -95,9 +89,7 @@ const lopFct = () => {
     });
 
     addInibBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#inib');
-        let value = parseInt(elt.getAttribute("data-after")) + 1;
-        elt.setAttribute("data-after", value)
+        let value = addValue('#inib');
 
         value === LOP.objectives.inib.values.max ?
             toggleButton(addInibBtn,    disable) :
@@ -106,9 +98,7 @@ const lopFct = () => {
     });
 
     removeNexusBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#nexus');
-        let value = parseInt(elt.getAttribute("data-after")) - 1;
-        elt.setAttribute("data-after", value)
+        removeValue('#nexus');
 
         toggleButton(removeNexusBtn, disable);
         toggleButton(addNexusBtn,    enable);
@@ -116,9 +106,7 @@ const lopFct = () => {
     });
 
     addNexusBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#nexus');
-        let value = parseInt(elt.getAttribute("data-after")) + 1;
-        elt.setAttribute("data-after", value)
+        addValue('#nexus');
 
         toggleButton(addNexusBtn,    disable);
         toggleButton(removeNexusBtn, enable);
@@ -127,9 +115,7 @@ const lopFct = () => {
 
     // KDA
     removeKillBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#kill');
-        let value = parseInt(elt.getAttribute("data-after")) - 1;
-        elt.setAttribute("data-after", value)
+        let value = removeValue('#kill');
 
         value === 0 ?
             toggleButton(removeKillBtn, disable) :
@@ -138,9 +124,7 @@ const lopFct = () => {
     });
 
     addKillBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#kill');
-        let value = parseInt(elt.getAttribute("data-after")) + 1;
-        elt.setAttribute("data-after", value)
+        let value = addValue('#kill');
 
         value === LOP.kda.kill.values.max ?
             toggleButton(addKillBtn,    disable) :
@@ -149,9 +133,7 @@ const lopFct = () => {
     });
 
     removeDeathBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#death');
-        let value = parseInt(elt.getAttribute("data-after")) - 1;
-        elt.setAttribute("data-after", value)
+        let value = removeValue('#death');
 
         value === 0 ?
             toggleButton(removeDeathBtn, disable) :
@@ -160,9 +142,7 @@ const lopFct = () => {
     });
 
     addDeathBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#death');
-        let value = parseInt(elt.getAttribute("data-after")) + 1;
-        elt.setAttribute("data-after", value)
+        let value = addValue('#death');
 
         value === LOP.kda.death.values.max ?
             toggleButton(addDeathBtn,    disable) :
@@ -171,9 +151,7 @@ const lopFct = () => {
     });
 
     removeAssistBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#assist');
-        let value = parseInt(elt.getAttribute("data-after")) - 1;
-        elt.setAttribute("data-after", value)
+        let value = removeValue('#assist');
 
         value === 0 ?
             toggleButton(removeAssistBtn, disable) :
@@ -182,9 +160,7 @@ const lopFct = () => {
     });
 
     addAssistBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#assist');
-        let value = parseInt(elt.getAttribute("data-after")) + 1;
-        elt.setAttribute("data-after", value)
+        let value = addValue('#assist');
 
         value === LOP.kda.death.values.max ?
             toggleButton(addAssistBtn,    disable) :
@@ -194,31 +170,25 @@ const lopFct = () => {
 
     // JUNGLE
     removeCarapBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#carap');
-        let value = parseInt(elt.getAttribute("data-after")) - 1;
-        elt.setAttribute("data-after", value)
+        let value = removeValue('#carap');
 
         value === 0 ?
-            toggleButton(removeCaraptBtn, disable) :
-            toggleButton(addCaraptBtn,    enable);
+            toggleButton(removeCarapBtn, disable) :
+            toggleButton(addCarapBtn,    enable);
         calcul();
     });
 
     addCarapBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#carap');
-        let value = parseInt(elt.getAttribute("data-after")) + 1;
-        elt.setAttribute("data-after", value)
+        let value = addValue('#carap');
 
         value === LOP.jungle.carap.values.max ?
-            toggleButton(addCaraptBtn,    disable) :
-            toggleButton(removeCaraptBtn, enable);
+            toggleButton(addCarapBtn,    disable) :
+            toggleButton(removeCarapBtn, enable);
         calcul();
     });
 
     removeHeraldBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#herald');
-        let value = parseInt(elt.getAttribute("data-after")) - 1;
-        elt.setAttribute("data-after", value)
+        removeValue('#herald');
 
         toggleButton(removeHeraldBtn, disable);
         toggleButton(addHeraldBtn,    enable);
@@ -226,9 +196,7 @@ const lopFct = () => {
     });
 
     addHeraldBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#herald');
-        let value = parseInt(elt.getAttribute("data-after")) + 1;
-        elt.setAttribute("data-after", value)
+        addValue('#herald');
 
         toggleButton(addHeraldBtn,    disable);
         toggleButton(removeHeraldBtn, enable);
@@ -236,9 +204,7 @@ const lopFct = () => {
     });
 
     removeDragonBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#drake');
-        let value = parseInt(elt.getAttribute("data-after")) - 1;
-        elt.setAttribute("data-after", value)
+        let value = removeValue('#drake');
 
         value === 0 ?
             toggleButton(removeDragonBtn, disable) :
@@ -247,9 +213,7 @@ const lopFct = () => {
     });
 
     addDragonBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#drake');
-        let value = parseInt(elt.getAttribute("data-after")) + 1;
-        elt.setAttribute("data-after", value)
+        let value = addValue("#drake");
 
         value === LOP.jungle.dragon.values.max ?
             toggleButton(addDragonBtn,    disable) :
@@ -258,9 +222,7 @@ const lopFct = () => {
     });
 
     removeBaronBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#baron');
-        let value = parseInt(elt.getAttribute("data-after")) - 1;
-        elt.setAttribute("data-after", value)
+        let value = removeValue('#baron');
 
         value === 0 ?
             toggleButton(removeBaronBtn, disable) :
@@ -269,9 +231,7 @@ const lopFct = () => {
     });
 
     addBaronBtn.addEventListener('click', () => {
-        let elt = document.querySelector('#baron');
-        let value = parseInt(elt.getAttribute("data-after")) + 1;
-        elt.setAttribute("data-after", value)
+        let value = addValue('#baron');
 
         value === LOP.jungle.baron.values.max ?
             toggleButton(addBaronBtn,    disable) :
@@ -280,7 +240,7 @@ const lopFct = () => {
     });
 
     pseudoInput.onkeyup = () => {
-        let value      = LOP.link.input.value;
+        let value      = pseudoInput.value;
         let opgg       = LOP.link.opgg;
         let porofessor = LOP.link.porofessor;
 
@@ -304,6 +264,20 @@ const lopFct = () => {
             elt.setAttribute("data-after", 0);
         }
     };
+
+    function addValue(selector) {
+        let elt = document.querySelector(selector);
+        let value = parseInt(elt.getAttribute("data-after")) + 1;
+        elt.setAttribute("data-after", value)
+        return value;
+    }
+
+    function removeValue(selector) {
+        let elt = document.querySelector(selector);
+        let value = parseInt(elt.getAttribute("data-after")) - 1;
+        elt.setAttribute("data-after", value)
+        return value;
+    }
 
     function toggleButton(button, state) {
         button.disabled = state;
@@ -394,7 +368,7 @@ const lopFct = () => {
                     break;
 
                 default:
-                    console.log("New value : ", value);
+                    console.log("[LOP] New value : ", value);
                     break;
             }
         }
