@@ -1,4 +1,4 @@
-# League-Of-Pump
+# League-Of-Sport
 
 Site web pour faire du sport en jouant à League Of Legends en fonction de ses stats  
 
